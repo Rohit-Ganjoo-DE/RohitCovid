@@ -1,0 +1,11 @@
+docs/*
+data/*
+
+# Executables
+*.gslides
+*.ini
+*.gsheet
+*.gdoc
+*.File
+
+
