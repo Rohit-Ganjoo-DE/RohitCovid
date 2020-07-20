@@ -2,7 +2,7 @@
 
 # Data Pipeline for Covid19india.org API
 Using Covid19india.org api to fetch daily confirmed, recovered, deceased case numbers for each state, and
- daily testing samples collected for the entire nation.
+ daily testing samples collected for the entire nation as a Pandas DataFrame or storing it as a CSV. 
 
 ## Getting Started
 Import functions from script:
