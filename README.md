@@ -10,17 +10,17 @@ Import functions from script:
 from Data_Pipeline.Covid19_india_org_api import make_dataframe, make_state_dataframe, get_test_dataframe
 ```
 Functions:
-1. make_dataframe()
+1. make_dataframe()\
 Returns DataFrame with data parsed from source [1].
 National time-series with Daily/TotalConfirmed, Daily/TotalDeceased, Daily/TotalRecovered
 Data starting - 2020-01-30.
 
-2. make_state_dataframe()
+2. make_state_dataframe()\
 Returns Multi-indexed DataFrame with data parsed from source [2].
 National and State wise time-series with DailyConfirmed, DailyDeceased, DailyRecovered
 Data starting - 2020-03-14.
 
-3. get_test_dataframe()
+3. get_test_dataframe()\
 Returns DataFrame with data parsed from source [3].
 National Testing time-series. Multiple entries exist for particular dates.
 Data starting - 2020-03-13.
@@ -34,6 +34,7 @@ Data Format: JSON
 data in the format of ['cases_time_series'] with objects for each day nested in it. ['key_values']
 another key/object in it of the form ['statewise']
 Data starting from 30th January to the current day.
+```
 # got the json data but it is not very readable
 # print(source)
 # print(json.dumps(data, indent=2))
@@ -47,6 +48,7 @@ Data starting from 30th January to the current day.
 # "totaldeceased": "0",
 # "totalrecovered": "0"
 # print(json.dumps(data['cases_time_series'], indent = 2))
+```
 
 2. Covid19india.org API Daily State wise time-series CSV
 https://api.covid19india.org/csv/latest/state_wise_daily.csv
