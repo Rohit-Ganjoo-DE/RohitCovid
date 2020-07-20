@@ -1,65 +1,66 @@
 # Mentorskool Community Projects - COVID-19
 
-**Hi There!**
+# Data Pipeline for Covid19india.org API
+Using Covid19india.org api to fetch daily confirmed, recovered, deceased case numbers for each state, and
+ daily testing samples collected for the entire nation.
 
-Mentorskool welcomes you all to this exciting new project!
+## Getting Started
+Import functions from script:
+```python 
+from Data_Pipeline.Covid19_india_org_api import make_dataframe, make_state_dataframe, get_test_dataframe
+```
+Functions:
+1. make_dataframe()
+Returns DataFrame with data parsed from source [1].
+National time-series with Daily/TotalConfirmed, Daily/TotalDeceased, Daily/TotalRecovered
+Data starting - 2020-01-30.
 
-### What's this project all about?
-The year 2020 has brought itself one of the worst pandemics in the world history. The coronavirus which started off in Wuhan, China has now spread across the world and caused more than 3.5 million active cases as on today. While the entire Europe and US has been ravaged by the invisible enemy, India has been fighting this really hard and has made all attempts possible to control the spread and test people enough to objectively assess the possibility of a community spread. <br>
+2. make_state_dataframe()
+Returns Multi-indexed DataFrame with data parsed from source [2].
+National and State wise time-series with DailyConfirmed, DailyDeceased, DailyRecovered
+Data starting - 2020-03-14.
 
-Data Science offers great promise towards answering some of the pertinent questions asked by the Govt. as well as people related to this unforeseen pandemic. Can we as Data Scientists help them get answers to some of them like the one below?
+3. get_test_dataframe()
+Returns DataFrame with data parsed from source [3].
+National Testing time-series. Multiple entries exist for particular dates.
+Data starting - 2020-03-13.
 
-* Which are the most affected States?
-* Which states have been able to successfully control the spread?
-* What is the rate of spread across States?
-* Is the current rate of testing sufficient?
-* Which states should focus on rapidly increasing the testing rate?
-* Are older people more vulnerable to the disease?
-* Does the disease spread faster in men compared to women?
-* What % of affected patients had a travel history against in-house?
+## Data Sources
 
-And the possibilites are just endless!!
+1. Covid19india.org API Daily National time-series JSON
+https://api.covid19india.org/data.json
 
------------------
+Data Format: JSON
+data in the format of ['cases_time_series'] with objects for each day nested in it. ['key_values']
+another key/object in it of the form ['statewise']
+Data starting from 30th January to the current day.
+# got the json data but it is not very readable
+# print(source)
+# print(json.dumps(data, indent=2))
+# data in the format of ['cases_time_series'] with objects for each day nested in it. ['key_values']
+# another key/object in it of the form ['statewise']
+# Lets read cases time-series
+# "dailydeceased": "0",
+# "dailyrecovered": "0",
+# "date": "30 January ",
+# "totalconfirmed": "1",
+# "totaldeceased": "0",
+# "totalrecovered": "0"
+# print(json.dumps(data['cases_time_series'], indent = 2))
 
-### Tasks you'll do
-* Collate data from multiple public sources to develop an extensive base dataset to help answer most of the questions asked above
-* Perform Data Modelling to develop  data dictionaries and ER diagrams to replicate a COVID Analysis data set up
-* Regular data pre-processing and wrangling
-* Working with structured (Tables, CSV), Unstructured (Free text) data using Python
-* Design and implement different types of databases (ex. Relational or NoSQL) as per the demands of structure of data
-* Perform extensive exploratory data analysis using SQL and/or Python
-* Apply time series techniques to perform disease count predictions
-* Host, Manage and work with data on cloud platforms like Azure and AWS
-* Statistical analysis
-	* Uni-variate
-	* Bi-variate
-	* Tests of significance
-	* Distributions
-* Visualization (Both Python based and Power BI/Tableau based)
-* Clustering of patients based on their attributes to try and see any meaningful group formation etc.
+2. Covid19india.org API Daily State wise time-series CSV
+https://api.covid19india.org/csv/latest/state_wise_daily.csv
 
------------------
+Data Format: CSV
+Perfectly clean CSV. Using source [1] to rename state code columns to State name (consistent with API, makes it more
+readable)
+Data starting 2020-03-14.
 
-### Skills you'll learn 
-* Visualization in Python (matplotlib, seaborn, plotly)
-* Visualization in Power BI/Tableau
-* Data Modelling
-* Implementing a Logical schema into an actual database (Relational/NoSQL)
-* Data Mining with SQL/Python
-* Statistical analysis with Python (scipy)
+3. Datameet Daily ICMR Covid Testing samples data JSON
+https://raw.githubusercontent.com/datameet/covid19/master/data/icmr_testing_status.json
 
----------------------------
+Scraped Testing data from ICMR notices.
+Data starting - 2020-03-13.
+Multiple entries exist for particular dates.
 
-### Project Outcomes
-* Project storybook developed in the form of a Google Colab notebook
-* Video summary of your project
-* Your own website created as GitHub pages
-
----------------------------
-
-### How to get started?
-* Quite simple! Follow the steps mentioned in <a href="https://github.com/mentorskool/Welcome/blob/master/docs/Setting%20up%20your%20project.pdf" target="_blank">**this**</a> document to setup your project
-* Work with your instructor and project team members to kick off your learning journey
-
-## Best of Luck!
+**** All Data sources reachable and functions working as of - 20.07.20 ****
