@@ -1,0 +1,49 @@
+Tools :
+
+Software:
+
+
+1. GStreamer - pipeline-based multimedia framework that links together a wide variety of media processing systems to complete complex workflows.
+
+2. Apache Airflow - ETL workflow management.
+
+
+Deployment:
+
+1. The Kubeflow - project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple.
+
+2. Kubernetes -  container-orchestration system for automating application deployment, scaling, and management. 
+
+3. Docker - Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. 
+
+4. ONNX - Open Neural Network Exchange
+Supports keras, TF, PyTorch etc.
+
+Android-Mobile ML Tools:
+
+1. ML Kit for Firebase 
+
+2. Google Mobile Vision
+
+Nvidia Ecosystem:
+
+1. Container Runtime, with docker for deployment ?
+
+2. NVIDIA Data Loading Library (DALI) - preprocessing of input data. (ETL ?)
+
+3. Nvidia Deepstream SDK for deployment of ML based vision/image solutions. (pipeline, works with jetson)
+
+4. Ml Transfer Learning Toolkit - has pretrained models uploaded etc. Supports tensorflowRT, Network Pruning. 
+
+5. Nvidia Cloud GPU
+
+6. How to Build and Deploy Accurate Deep Learning Models for Intelligent Image and Video Analytics
+
+https://medium.com/dataseries/build-and-deploy-accurate-deep-learning-models-for-intelligent-image-and-video-analytics-8ad755213c06
+
+7. . TensorRT - SDK for high-performance deep learning inference.
+
+Hardware:
+
+1. Google Coral Board edge TPU
+
