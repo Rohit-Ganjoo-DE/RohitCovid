@@ -8,4 +8,5 @@ data/*
 *.gdoc
 *.File
 
-
+.idea/
+.ipynb_checkpoints

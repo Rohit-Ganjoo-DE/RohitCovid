@@ -1,6 +1,6 @@
-# ### Google Cloud Function Script
-# "Function execution took 3199 ms, finished with status code: 200" <br>
-# HTTP Trigger (No Authentication - DO NOT PUBLISH) : https://us-central1-covid19-india-analysis-284814.cloudfunctions.net/fetch_raw_covid_api_data 
+# ### Google Cloud Function Script  "Function execution took 7867 ms, finished with status code: 200"
+# HTTP Trigger (No Authentication - DO NOT PUBLISH) :
+# REMOVED
 #
 
 # +
@@ -95,6 +95,19 @@ def make_state_dataframe(file_loc):
     state_daily_data.Date = pd.to_datetime(state_daily_data.Date)
     state_daily_data = state_daily_data.pivot(index='Date', columns='Status')
 
+    # Melt stacked Column index Dataframe to long Dataframe
+    state_daily_data.reset_index(inplace=True)
+    state_daily_data = state_daily_data.melt(id_vars=['Date'])
+
+    # renaming orphan column with state data
+    state_daily_data.rename(axis=1, mapper={None: 'State'}, inplace=True)
+
+    # Pivoting to reshape Status column values(Recovered, Confirmed, Deceased Cases) to columns
+    state_daily_data = state_daily_data.pivot_table(index=['Date', 'State'], columns='Status', values='value')
+
+    # Reset index to replicate stacked index Date to Date column before setting as index.
+    state_daily_data = state_daily_data.reset_index().set_index('Date')
+
     state_daily_data.to_csv(file_loc)
 
     print(f"Downloaded Daily State Stats CSV at '{file_loc}'")
@@ -150,17 +163,17 @@ from os.path import isfile, join
 
 # +
 # Creating client
-#storage_client = storage.Client()
+# storage_client = storage.Client()
 # Connecting to Bucket
-#bucket = storage_client.get_bucket('covid19-india-analysis-bucket')
+# bucket = storage_client.get_bucket('covid19-india-analysis-bucket')
 # Listing all blobs or objects - funny flat hierarchy structure followed by GCS
-#print(list(bucket.list_blobs()))
+# print(list(bucket.list_blobs()))
 # -
 
 def upload_to_bucket(bucket, local_folder, bucket_folder):
     """ Uploads Extracted files from pipeline to GCS Bucket.
     """
-    files = [f for f in listdir(local_folder) if isfile(join(local_folder,f))]
+    files = [f for f in listdir(local_folder) if isfile(join(local_folder, f))]
     for file in files:
         # local individual filenames
         file_name = join(local_folder, file)
@@ -168,7 +181,7 @@ def upload_to_bucket(bucket, local_folder, bucket_folder):
         blob = bucket.blob(join(bucket_folder, file))
         # Actually upload the file.
         blob.upload_from_filename(file_name)
-    
+
     print(f'Uploaded {files} to "{bucket.id}" bucket.')
 
 
@@ -185,4 +198,4 @@ def main(request):
     # Connecting to Bucket
     bucket = storage_client.get_bucket('covid19-india-analysis-bucket')
     # Upload all files in temp to bucket.
-    upload_to_bucket(bucket = bucket, local_folder='/tmp/', bucket_folder='Data/Raw/')
+    upload_to_bucket(bucket=bucket, local_folder='/tmp/', bucket_folder='Data/Raw/')
