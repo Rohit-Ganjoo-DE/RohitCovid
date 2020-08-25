@@ -6,6 +6,8 @@ docs/*
 *.gsheet
 *.gdoc
 *.File
-
+.pyc
 .idea/
 .ipynb_checkpoints
+
+data-science-7257561b4438.json

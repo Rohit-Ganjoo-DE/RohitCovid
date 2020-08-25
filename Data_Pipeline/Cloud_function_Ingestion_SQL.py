@@ -46,15 +46,15 @@ def add_data_table(engine, tablename, df):
 
 # Remember - storing secrets in plaintext is potentially unsafe.
 
-def connect_db():
+def connect_db(db_user, db_pass, db_name, cloud_sql_connection_name):
     """ Connects to Cloud SQL DB Using provided Unix Socket. Username, Password etc. Hardcoded.
     Problematic.
     """
-    db_user = 'postgres'
-    db_pass = '1urAug2szewJrvng'
-    db_name = 'covid19-data'
+    db_user = db_user
+    db_pass = db_pass
+    db_name = db_name
     db_socket_dir = os.environ.get("DB_SOCKET_DIR", "/cloudsql")
-    cloud_sql_connection_name = 'covid19-india-analysis-284814:***REMOVED***:covid19-data-server'
+    cloud_sql_connection_name = cloud_sql_connection_name
 
     engine = sqlalchemy.create_engine(
         # Equivalent URL:
@@ -84,10 +84,10 @@ def main(request):
     storage_client = storage.Client()
 
     # connect to a bucket
-    bucket = storage_client.get_bucket('covid19-india-analysis-bucket')
+    bucket = storage_client.get_bucket('mskl-data-lake')
 
     # Download RAW CSVs from GCS Bucket to Cloud Function temp. storage.
-    download_folder_bucket(bucket, 'Data/Raw/', '/tmp/')
+    download_folder_bucket(bucket, 'covid-19/raw/pipeline/', '/tmp/')
 
     # Loading and Transforming data
     data = pd.read_csv('/tmp/COVID_India_National.csv', parse_dates=True, index_col=0)
@@ -97,11 +97,15 @@ def main(request):
     test = test.loc[~test.index.duplicated(keep='last')]
 
     # Connect to CloudSQL DB
-    engine = connect_db()
+    #engine = connect_db(db_user= 'postgres', db_pass = '***REMOVED***', db_name = 'covid19-data',
+     #cloud_sql_connection_name = 'covid19-india-analysis-284814:***REMOVED***:covid19-data-server')
 
     # Uploading Data to DB
-    add_data_table(engine, 'overall_stats', data)
-    add_data_table(engine, 'states_info', state)
-    add_data_table(engine, 'testing_stats', test)
+    #add_data_table(engine, 'overall_stats', data)
+    #add_data_table(engine, 'states_info', state)
+    #add_data_table(engine, 'testing_stats', test)
 
     print('Executed')
+
+
+main('test')
