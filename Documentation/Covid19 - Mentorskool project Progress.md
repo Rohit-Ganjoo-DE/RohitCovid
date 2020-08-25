@@ -87,10 +87,18 @@ Triggered by a HTTP Request using Cron Job/Cloud scheduler
  >Cloud_function_Ingestion_SQL.py \
  deployed as – ingestion-clean-cloud-sql
 
-	
+Trigger (No authentication Dont share) -\
+ https://***REMOVED***-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
 
-	(No authentication Dont share)
-	Trigger - https://***REMOVED***-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
+	GCP Logs- Function execution started
+		199 Records in overall_stats
+		Added 0 Records to table
+		6045 Records in states_info
+		Added 39 Records to table
+		144 Records in testing_stats
+		Added 1 Records to table
+		Function execution took 2736 ms, finished with status code: 200
+
 
 **Steps for Permissions to connect with cloudSQl and bucket** : 
 Assigned Service account ***REMOVED***@appspot.gserviceaccount.com\
@@ -113,13 +121,4 @@ The cloud function have unauthorized access enabled for the cron jobs.
     – Read filefrom GCS bucket
     – clean it and make sure it is acc. to schema of table in DB:
 	– add_data_table(engine, 'table_name', Pandas_dataframe_ cleaned for ingestion)
-	
-	Logs- Function execution started
-		199 Records in overall_stats
-		Added 0 Records to table
-		6045 Records in states_info
-		Added 0 Records to table
-		144 Records in testing_stats
-		Added 0 Records to table
-		Function execution took 2736 ms, finished with status code: 200
 
