@@ -4,7 +4,8 @@ _**Documentation for data pipeline created for the mentorskool community project
 The project provides an automated ETL pipeline that collects data related to the Covid outbreak from APIs, web sources etc. and provides analysts access to consistent, clean and up to date data. The Pipeline is hosted on the <b>Google Cloud Platform</b> and has the following components: </p>
 
 ![Pipeline](Documentation/Covid_19_Data_Pipeline.png)
-
+## Project Details and Report 
+**Project work summary, goals** - [here](Documentation/Covid19-Mentorskool_project_Progress.md)
 ### 1. Starter Functions
 1. Cloud SQL : Connecting and querying [starter notebook](Starter_Notebooks/Query_Cloud_SQL_Starter_Notebook.ipynb)
 2. Data Ingestion : The helper code, functions etc. that were used to create the ETL Data Pipeline. [notebook](Starter_Notebooks/Data_Ingestion_Pipeline_Starter.ipynb)
