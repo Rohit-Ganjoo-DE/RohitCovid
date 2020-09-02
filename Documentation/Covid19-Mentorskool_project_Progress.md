@@ -28,7 +28,7 @@
 	Note - If you add new data sources that are to be fetched on a schedule. Update this. 
 
 HTTP Trigger (No authentication Dont share)-\
- https://us-central1-covid19-india-analysis-284814.cloudfunctions.net/fetch_raw_covid_api_data 
+ https://***REMOVED***.cloudfunctions.net/fetch_raw_covid_api_data 
 
 
 	
@@ -43,16 +43,16 @@ HTTP Trigger (No authentication Dont share)-\
 	```
     # Details
     instance id - covid19-india
-	cloud_sql_connection_name = data-science-222913:asia-south1:covid19-india
+	cloud_sql_connection_name = data-science-222913:***REMOVED***
 
 	# Credentials
 	db_user = 'postgres'
-	db_password = 'mentorskool123'
-	cloud_sql_ip = '35.200.129.164:5432'
+	db_password = ***REMOVED***
+	cloud_sql_ip = ***REMOVED***
 	db_name = 'covid19-india'
 	
     2nd User - client 
-	password - client123
+	password - ***REMOVED***
 
 	# Specs of deployed Instance (all lowest possible) : 
 	machine selected - 1 shared vCPU
@@ -88,7 +88,7 @@ Triggered by a HTTP Request using Cron Job/Cloud scheduler
  deployed as – ingestion-clean-cloud-sql
 
 Trigger (No authentication Dont share) -\
- https://asia-south1-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
+ https://***REMOVED***.cloudfunctions.net/ingestion-clean-cloud-sql 
 
 	GCP Logs- Function execution started
 		199 Records in overall_stats
