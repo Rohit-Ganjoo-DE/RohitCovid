@@ -36,16 +36,16 @@ Steps for creation.
 2. Create PostgreSQL CloudSQL instance and create covid-19-india server 
 	
 	instance id - covid19-india
-	cloud_sql_connection_name = ***REMOVED***:***REMOVED***:covid19-india
+	cloud_sql_connection_name = data-science-222913:asia-south1:covid19-india
 
 	# Credentials
 	db_user = 'postgres'
-	db_password = '***REMOVED***'
-	cloud_sql_ip = '***REMOVED***'
+	db_password = 'mentorskool123'
+	cloud_sql_ip = '35.200.129.164:5432'
 	db_name = 'covid19-india'
 	
 	2nd User - client 
-	password - ***REMOVED***
+	password - client123
 
 	Details(all lowest possible) : 
 	machine selected - 1 shared vCPU
@@ -69,7 +69,7 @@ When Adding new data sources to SQL Server/Modifying Schema, can modify using he
 		2. Add location of Key to environment variable.
 		3. Install the cloudSQL proxy. 
 		4. Navigate to location of clouSQL proxy and connect to the server
-		./cloud_sql_proxy -instances=***REMOVED***:***REMOVED***:covid19-india=tcp:5432
+		./cloud_sql_proxy -instances=data-science-222913:asia-south1:covid19-india=tcp:5432
 		5. Connect Using SQL Alchemy Engine to proxy local server. 
 		Helper Notebook
 
@@ -82,7 +82,7 @@ When Adding new data sources to SQL Server/Modifying Schema, can modify using he
 	Loads the raw files from the buckets, cleans it and Uploads to CloudSQL Server. 
 
 	(No authentication Dont share)
-	Trigger - https://***REMOVED***-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
+	Trigger - https://asia-south1-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
 
 	Steps for Permissions to connect with cloudSQl and bucket :
 

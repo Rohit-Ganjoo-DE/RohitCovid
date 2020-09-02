@@ -43,16 +43,16 @@ HTTP Trigger (No authentication Dont share)-\
 	```
     # Details
     instance id - covid19-india
-	cloud_sql_connection_name = ***REMOVED***:***REMOVED***:covid19-india
+	cloud_sql_connection_name = data-science-222913:asia-south1:covid19-india
 
 	# Credentials
 	db_user = 'postgres'
-	db_password = '***REMOVED***'
-	cloud_sql_ip = '***REMOVED***'
+	db_password = 'mentorskool123'
+	cloud_sql_ip = '35.200.129.164:5432'
 	db_name = 'covid19-india'
 	
     2nd User - client 
-	password - ***REMOVED***
+	password - client123
 
 	# Specs of deployed Instance (all lowest possible) : 
 	machine selected - 1 shared vCPU
@@ -88,7 +88,7 @@ Triggered by a HTTP Request using Cron Job/Cloud scheduler
  deployed as – ingestion-clean-cloud-sql
 
 Trigger (No authentication Dont share) -\
- https://***REMOVED***-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
+ https://asia-south1-covid19-india-analysis-284814.cloudfunctions.net/ingestion-clean-cloud-sql 
 
 	GCP Logs- Function execution started
 		199 Records in overall_stats
@@ -101,7 +101,7 @@ Trigger (No authentication Dont share) -\
 
 
 **Steps for Permissions to connect with cloudSQl and bucket** : 
-Assigned Service account ***REMOVED***@appspot.gserviceaccount.com\
+Assigned Service account data-science-222913@appspot.gserviceaccount.com\
 with **Cloud SQL Admin, Storage Admin Roles**
 
 ## 5. Created Cron Jobs that call [1] and [4] on a schedule using Google cloud sceduler.
@@ -122,3 +122,5 @@ The cloud function have unauthorized access enabled for the cron jobs.
     – clean it and make sure it is acc. to schema of table in DB:
 	– add_data_table(engine, 'table_name', Pandas_dataframe_ cleaned for ingestion)
 
+## 7. Important - Cleanup
+Turn off CloudSQL instance and suspend cron jobs to avoid incurring charges when the pipeline is not in use. 

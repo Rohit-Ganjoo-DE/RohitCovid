@@ -97,8 +97,8 @@ def main(request):
     test = test.loc[~test.index.duplicated(keep='last')]
 
     # Connect to CloudSQL DB
-    #engine = connect_db(db_user= 'postgres', db_pass = '***REMOVED***', db_name = 'covid19-data',
-     #cloud_sql_connection_name = 'covid19-india-analysis-284814:***REMOVED***:covid19-data-server')
+    #engine = connect_db(db_user= 'postgres', db_pass = 'mentorskool123', db_name = 'covid19-data',
+     #cloud_sql_connection_name = 'covid19-india-analysis-284814:asia-south1:covid19-data-server')
 
     # Uploading Data to DB
     #add_data_table(engine, 'overall_stats', data)
